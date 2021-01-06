@@ -1,0 +1,68 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	
+	<body onload="onLoad()">
+	
+		<div th:replace="~{base :: logo}"></div>
+		
+		<div class="container" id="ofertas">
+			
+			<div th:replace="~{base :: titulo('Faça sua Oferta')}"></div>
+			
+			<div class="card mb-3" v-for="pedido in pedidos">
+				<div class="card-header alert-dark">{{ pedido.nomeProduto }}</div>
+				
+				<div class="card-body">
+					<div class="row">
+						
+						<div class="col-12 col-sm-8 mb-3">
+						
+							<div class="row">
+								<div class="col-md-5">Valor: <input /></div>
+								<div class="col-md-7">Data da entrega: <input /></div>
+							</div>
+							
+							<div>Produto</div>
+							<div><a v-bind:href="pedido.urlProduto">{{ pedido.nomeProduto }}</a></div>
+							
+							<div>Descrição</div>
+							<div>
+								<textarea class="form-control">{{ pedido.descricao }}</textarea>
+							</div>
+						</div>
+						
+						<div class="col-12 col-sm-4">
+							<div>
+								<img class="img-thumbnail" v-bind:src="pedido.urlImagem" />
+							</div>
+						</div>
+					
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<script>
+			function onLoad() {
+			
+				var app = new Vue({
+					el: '#ofertas',
+					data: {
+						pedidos: [
+						{
+							"nomeProduto":"Camisa Lebron James 23 - Lakers",
+							"valorNegociado":400.00,
+							"dataDaEntrega":null,
+							"urlProduto":"https://cdn.awsli.com.br/600x1000/1100/1100536/produto/47966891/327403c556.jpg",
+							"urlImagem":"https://cdn.awsli.com.br/600x1000/1100/1100536/produto/47966891/327403c556.jpg",
+							"descricao":"Camisa número 23 do Lebron James, time Los Angeles Lakers",
+							"status":"AGUARDANDO"
+						} ]
+					},
+				});
+				
+			}
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</body>
+</html>
