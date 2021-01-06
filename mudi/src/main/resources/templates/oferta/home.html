@@ -48,21 +48,18 @@
 				var app = new Vue({
 					el: '#ofertas',
 					data: {
-						pedidos: [
-						{
-							"nomeProduto":"Camisa Lebron James 23 - Lakers",
-							"valorNegociado":400.00,
-							"dataDaEntrega":null,
-							"urlProduto":"https://cdn.awsli.com.br/600x1000/1100/1100536/produto/47966891/327403c556.jpg",
-							"urlImagem":"https://cdn.awsli.com.br/600x1000/1100/1100536/produto/47966891/327403c556.jpg",
-							"descricao":"Camisa número 23 do Lebron James, time Los Angeles Lakers",
-							"status":"AGUARDANDO"
-						} ]
+						pedidos: []
 					},
+					mounted () {
+						axios
+							.get('http://localhost:8080/api/pedidos/aguardando')
+							.then(response => (this.pedidos = response.data))
+					}
 				});
 				
 			}
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	</body>
 </html>
