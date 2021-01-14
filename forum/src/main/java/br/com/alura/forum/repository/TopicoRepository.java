@@ -13,5 +13,5 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
     // Caso não siga o padrão de nome do JPA, utiliza-se:
     // @Query("SELECT t FROM Topico t WHERE t.curso.nome = :nomeCurso")
     // List<Topico> carregarPorNomeCurso(@Param("nomeCurso") String nomeCurso);
-    
+
 }
